@@ -1,0 +1,1 @@
+Olá esse é um projeto de uma assistente virtual feita em JS com objetivos de ajudar em algumas tarefas 

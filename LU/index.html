@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="relogio.css">
+    <meta name="keywords" content="ASI">
+    <link rel="icon"
+        href="/img/tecido-ecologico.png">
+    <title>LU</title>
+</head>
+
+<body>
+  
+    <div class="btn">
+        <button id="btn">Lu</button>
+    </div>
+
+
+
+    <div class="icon">
+        <a href=""><img src="/img/facebook.png" alt=""></a>
+        <a href=""><img src="img/instagram.png" alt=""></a>
+        <a href=""><img src="img/twitter.png" alt=""></a>
+        <a href=""><img src="img/whatsapp.png" alt=""></a>
+        <a href=""><img src="img/youtube.png" alt=""></a>
+        <a href=""><img src="img/tik-tok.png" alt=""></a>
+        <a href=""><img src="img/gmail.png" alt=""></a>
+    </div>
+   
+
+
+
+    <script src="js/artyom.window.js"></script>
+
+    <script>
+
+        const lu = new Artyom();
+        document.getElementById("btn").addEventListener("click", function () {
+            lu.say("Olá, como posso ajudar");
+        }, false);
+
+        var funcTime = {
+            indexes: ["Que horas são?"],
+            action: i => {
+                data = new Date();
+                horas = data.getHours();
+                minutos = data.getMinutes()
+                lu.say(`São ${horas} horas e ${minutos} minutos!`)
+            }
+        };
+
+        var funcOi = {
+            indexes: ["Oi", "Olá", "Lu", "Hey"],
+            action: i => {
+                if(i==0 || i==1 || i==2 || i==3){
+                    lu.sayRandom(["Olá", "Como posso ajudar", "Oi"])
+                }
+            }
+        };
+
+        var funcGoogle = {
+            indexes: ["Abra o goole!", "Lu abra o google!", "Lu google"],
+            action: i => {
+                if (i==0 || i==1 || i==2){
+                    lu.say("Abrindo Google!")
+                    window.open("https://www.google.com/")
+                }           
+            }
+        };
+
+        var funcYoutube = {
+            indexes: ["Abra o youtube!", "Lu abra o youtube!", "Lu youtube"],
+            action: i => {
+                if(i==0 || i==1 || i==2)
+                lu.say("Abrindo Youtube!")
+                window.open("https://www.youtube.com/")
+            }
+        };
+
+        var funcPiad = {
+            indexes: ["Conte uma piada!", "Faça uma piada"],
+            action: i =>{
+                if (i==0 || i==1){
+                    lu.sayRandom([
+                        "Por que o esqueleto não brigou com ninguém?......Porque ele não tem estômago para isso!", 
+                        "O que é um pontinho amarelo na beira da estrada?......Um limãozinho esperando o ônibus?",
+                        "Como o Batman faz para que o seu cereal esteja sempre crocante?......Ele deixa no Bat-pote!",
+                        "O que o zero disse para o oito?......Que cinto bonito você está usando",
+                        "Por que o livro de matemática está sempre triste?......Porque tem muitos problemas!"
+                    ])
+                    lu.say("Sou boa né")
+                }
+            }
+        }
+
+        var funcsay = {
+            smart: true,
+            indexes: ["Repita depois de mim *"],
+            action: (i, ghost) =>{
+                lu.say(ghost);
+            }
+        };
+
+        var funcnot = {
+            indexes: ["Notícias!", "Quais são as notícias!", "Lu quais são as novas!"],
+            action: i => {
+                if(i==0 || i==1 || i==2){
+                    lu.say("Aqui está um portal de notícia!")
+                    window.open("https://g1.globo.com/")
+                }
+            }
+        };
+
+        
+
+        var funcSrg = {
+            indexes: ["Como você surgiu!", "Como você nasceu"],
+            action: (i) => {
+                if (i == 0 || i == 1) {
+                    lu.say("Me chamo Lu, eu sou uma assistente virtual criada com intuito de ajudar os idosos com suas atividades")
+                }
+            }
+        };
+
+        var funcDate = {
+        indexes: ["Que dia é hoje", "A data atual","Me diga que dia é hoje"],
+        action: function(i){
+            if(i==0 || i==1 || i==2){
+                data = new Date();
+                dia = data.getDay();
+                mes = data.getMonth();
+                ano = data.getYear();
+                lu.say("Hoje é "+dia+" do "+mes+" de "+ano);
+            }
+        }
+    };
+
+
+
+
+        lu.initialize({
+            lang: "pt-PT",
+            continuous: true,
+            soundex: true,
+            debug: true,
+            executionKeyword: "and do it now",
+            listen: true
+        });
+
+
+        lu.addCommands(funcTime);
+        lu.addCommands(funcOi);
+        lu.addCommands(funcGoogle);
+        lu.addCommands(funcYoutube);
+        lu.addCommands(funcSrg);
+        lu.addCommands(funcDate);
+        lu.addCommands(funcsay);
+        lu.addCommands(funcnot)
+
+    </script>
+
+</body>
+
+</html>
